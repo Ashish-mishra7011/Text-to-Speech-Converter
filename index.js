@@ -15,6 +15,9 @@ voiceselect.addEventListener("change", () => {
 })
 
 document.querySelector("button"), addEventListener("click", () => {
+    if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel(); // Cancel if there is any ongoing speech jisse ki ye repeat na kare
+    }
     speech.text = document.querySelector("textarea").value;
     setTimeout(() => {
         window.speechSynthesis.speak(speech);
